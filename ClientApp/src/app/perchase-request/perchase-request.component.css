@@ -1,0 +1,77 @@
+fieldset {
+  border: 1px solid #c0c0c0;
+  padding-left: 4px;
+}
+
+legend {
+  font-size: 18px;
+  color: #0064B4;
+}
+
+.pr-content {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  font-size: 12px;
+}
+
+.pr-tab {
+  background-color: #0064B4;
+  color: white;
+  font-size: 14px;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.pr-tab:hover{
+  background-color: white;;
+  color: black;
+}
+.input-full-width {
+  width: 100%;
+}
+
+.input-department {
+  width: 70%;
+}
+table thead {
+  background-color: #0064b4;
+  color: white;
+  text-align: center;
+}
+td {
+  text-align: center;
+}
+.discuss-area {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #eceeef;
+}
+
+.input-bg-change {
+  background-color: #ECEEEF;
+}
+
+.col-mail-cc {
+  border: 1px solid gray;
+  padding-bottom: 6px;
+}
+
+.mail {
+  display: inline-block;
+  margin-left: 4px;
+  background-color: #0064b4;
+  margin-top: 8px;
+  border-radius: 2px;
+  color: white;
+}
+
+.pr-blue-text {
+  color: blue;
+}
+
+.custom {
+  width: 50%; 
+}

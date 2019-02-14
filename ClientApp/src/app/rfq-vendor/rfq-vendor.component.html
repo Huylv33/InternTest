@@ -1,0 +1,229 @@
+<div class="row">
+  <div class="col-md-12">
+    <fieldset>
+      <legend style="width: auto">
+        <i aria-hidden="true" class="fa fa-paper-plane"></i>
+        Xử lý yêu cầu báo giá
+      </legend>
+      <div class="rfq-content">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="float-left" style="width: 100%">
+              <span><b>Số báo giá</b></span><br>
+              <input type="text" class="form-control input-full-width" id="rfqnum" (blur)="onBlur(rfqNumber)" (focus)="onFocus()"
+                [ngClass]="{'input-bg-change': isOkChangeBG || rfqNumber.untouched}" name="rfqNumber" [(ngModel)]="RFQ.Number"
+                required #rfqNumber="ngModel">  
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="float-left" style="width: 100%">
+              <span><b>Mô tả yêu cầu báo giá</b></span><br>
+              <textarea type="text" rows="1" class="form-control input-full-width" id="rfq-des-textarea" name="rfqDescription"
+                [(ngModel)]="RFQ.Description" #rfqDescription="ngModel" required>
+                </textarea>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="float-left" style="width: 100%">
+              <span><b>Nơi nhận hàng</b></span><br>
+              <textarea type="text" rows="1" class="form-control input-full-width" name="ReceivedAddress" [(ngModel)]="RFQ.ReceivedAddress"
+                #rfqReceivedAddress="ngModel" required>
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="float-left" style="width: 100%">
+              <span><b>Công ty</b></span><br>
+              <ng-select class="custom" [items]="OrganizationList" bindLabel="Name" name="cty" placeholder="Chọn công ty"
+                [(ngModel)]="RFQ.OrganizationEntity">
+              </ng-select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="float-left" style="width: 100%">
+              <span><b>Phòng ban</b></span><br>
+              <ng-select class="custom" [items]="OrganizationUnitList" bindLabel="Code" name="phongban" placeholder="Chọn phòng ban"
+                [(ngModel)]="RFQ.OrganizationUnitEntity">
+              </ng-select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="float-left" style="width: 100%">
+              <span><b>Người yêu cầu</b></span><br>
+              <input type="text" class="form-control input-full-width" value="{{NameNYC}}" disabled>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-between py-2">
+              <div>
+                <b>Buyer xử lý</b>
+              </div>
+              <input type="text" class="input-department" name="handler" [(ngModel)]="RFQ.HandlerEntity.Name">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="py-2">
+              <label class="btn btn-success" style="font-size: 11px;">
+                Attach File<app-file-input
+                              [FileEntity]="FileEntity" 
+                           >
+                           </app-file-input>
+              </label>
+              <span class="ml-2">{{FileEntity.Name}}</span>
+            </div>
+            <!-- <span>{{getFileName()}}</span> -->
+          </div>
+        </div>
+        <div class="row" style="padding-top: 20px0">
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p><b>DANH SÁCH SẢN PHẨM</b></p>
+          </div>
+          <div class="col-md-12 column">
+            <table class="
+              table table-bordered table-hover
+             table-nowhitespace table-header">
+              <thead>
+                <tr>
+                  <th style="width: 2%">STT</th>
+                  <th style="width: 17%">Nhóm sản phẩm</th>
+                  <th style="width: 23%">Chi tiết sản phẩm</th>
+                  <th style="width: 8%">Số lượng</th>
+                  <th style="width: 7%">Đơn vị</th>
+                  <th style="width: 10%">Yêu cầu khác</th>
+                  <th style="width: 7.5%">Hành động</th>
+                  <th style="width: 17%">Nhà cung cấp</th>
+                  <th style="width: 3%">Duyệt</th>
+                  <th>Xóa</th>
+                </tr>
+              </thead>
+              <tbody class="table-bordered">
+                <tr *ngFor="let RFQDetailEntity of RFQ.RFQDetailEntities;let i = index">
+                  <td>{{i + 1}}</td>
+                  <td>
+                    <ng-select class="custom" [items]="CategoryList" bindLabel="Name" name="category" placeholder="Nhóm sản phẩm"
+                      [(ngModel)]="RFQDetailEntity.CategoryEntity">
+                    </ng-select>
+                  </td>
+                  <td>
+                    <textarea class="form-control" id="td-text-area"  placeholder="Mô tả.." type="text"
+                      [(ngModel)]="RFQDetailEntity.Description"  (keyup)="autoGrowTextarea(textarea)"
+                      #textarea>
+                    </textarea>
+                  </td>
+                  <td>
+                    <input class="form-control" type="number" [(ngModel)]="RFQDetailEntity.Quantity">
+                  </td>
+                  <td>
+                    <input class="form-control" type="text" [(ngModel)]="RFQDetailEntity.Unit">
+                  </td>
+                  <td>
+                    <textarea class="form-control" 
+                    [(ngModel)]="RFQDetailEntity.Note" 
+                    type="text">
+                    </textarea>
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <ul class="list-group">
+                      <li class="list-group-item" *ngFor="let Vendor of VendorEntities">
+                        {{Vendor.Name}}
+                        <i class="fa fa-clock-o" style="color: red"></i>
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger round" data-toggle="modal" data-target="#warning">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    <div class="modal" role="dialog" tabindex="-1" aria-labelledby="mySmallModalLabel" aria-hidden="true"
+                      id="warning">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <h4>Bạn có thực sự muốn xóa?</h4>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 10px;">Close</button>
+                            <button type="button" class="btn btn-danger" (click)="deleteRow(index)" data-dismiss="modal">Xóa</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="add-new-row" colspan="10" style="text-align: left">
+                    <span style="color: blue; cursor: pointer;" (click)="addNewRow()">Thêm dòng mới</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <span>CC:</span><br>
+            <ng-select class="custom" [items]="RFQMailCCList" bindLabel="Name" name="mailcc" [multiple]=true
+              placeholder="Chọn CC" [(ngModel)]="RFQ.RFQMailCCEntities">
+            </ng-select>
+          </div>
+          <div class="col-md-4">
+            <span><b>Ghi chú</b></span><br>
+            <input type="text" class="form-control input-full-width">
+          </div>
+          <div class="col-md-4 d-flex  justify-content-around align-items-center" style="padding-left: 10%">
+            <button type="button" class="btn btn-primary" style="font-size: 11px;" data-toggle="modal" data-target="#chooseNCC">Chọn
+              NCC</button>
+            <button type="button" class="btn btn-success" style="font-size: 11px;" (click)="validateForm()"><i class="fa fa-check"></i>
+              Cập
+              nhật</button>
+            <button type="button" class="btn btn-danger" style="font-size: 11px;"><i class="fa fa-times"></i> Hủy</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <p style="font-size: 12px; color:#0064b4 ;"><i class="fa fa-comments"></i> Thảo luận</p>
+            <div class="discuss-area">
+              <textarea class="form-control" placeholder="Nội dung thảo luận.." type="text"></textarea>
+              <button type="button" class="btn btn-primary float-right mt-1" style="font-size: 9px;"><i class="fa fa-check"></i>
+                Gửi thảo luận
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div class="modal" role="dialog" id="chooseNCC">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-light">
+        Chọn nhà cung cấp
+      </div>
+      <div class="modal-body">
+        <label>Nhà cung cấp</label>
+        <ng-select [items]="VendorList" bindLabel="Name" placeholder="Nhập tên NCC" name="NCC" [multiple]=true
+          [(ngModel)]="VendorEntities">
+        </ng-select>
+
+        <span style="color: red; font-size: 11px;">*Có thể chọn nhiều nhà cung cấp</span><br>
+        <label>Hạn gửi báo giá</label>
+        <input type="text" class="form-control" name="hanbaogia">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-check"></i> Lưu</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>

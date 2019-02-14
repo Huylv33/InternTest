@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="col-md-12">
+    <fieldset>
+      <legend style="width: auto">
+        <i aria-hidden="true" class="fa fa-paper-plane"></i>
+        Đề nghị mua sắm
+      </legend>
+      <div class="pr-content">
+        <div class="row">
+          <div class="col-md-6 text-center pr-tab">
+            Đề nghị mua sắm thường
+          </div>
+          <div class="col-md-6 text-center pr-tab">
+            Hợp đồng nguyên tắc
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-md-3">
+            <span><b>Số báo giá</b></span><br>
+            <input type="text" class="form-control input-full-width">
+          </div>
+          <div class="col-md-3">
+            <span><b>Mô tả ĐNMS</b></span><br>
+            <textarea type="text" rows="1" class="form-control input-full-width"></textarea>
+          </div>
+          <div class="col-md-3">
+            <span><b>Nhóm HH/DV</b></span><br>
+            <ng-select placeholder="Chọn nhóm HH/DV"></ng-select>
+          </div>
+          <div class="col-md-3">
+            <div class="mt-3">
+              <label class="btn btn-success" style="font-size: 11px;">
+                Attach File<input type="file" hidden>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 py-2 pr-blue-text">
+            -Bên yêu cầu<span style="color: red;">*</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <span><b>Ngày tạo đề nghị</b></span><br>
+            <input type="text" class="form-control input-full-width">
+          </div>
+          <div class="col-md-3">
+            <span><b>Công ty</b></span><br>
+            <ng-select placeholder="Công ty"></ng-select>
+
+          </div>
+          <div class="col-md-3">
+            <span><b>Mã số thuế</b></span><br>
+            <input type="text" class="form-control input-full-width">
+          </div>
+          <div class="col-md-3">
+            <span><b>Phòng ban</b></span><br>
+            <input type="text" class="form-control input-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <span><b>Ngày tạo đề nghị</b></span><br>
+            <input type="text" class="form-control input-full-width">
+          </div>
+          <div class="col-md-3">
+            <span><b>SĐT</b></span><br>
+            <input type="number" class="form-control input-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12  py-2 pr-blue-text">
+            -Thông tin sản phẩm<span style="color:red">*</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 d-flex align-items-center">
+            <ng-select class="custom" placeholder="Nhóm sản phẩm"></ng-select>
+            <button class="btn btn-primary ml-2" style="font-size:12px;">Import</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 column">
+            <table class="mt-3
+              table table-bordered table-hover
+             table-nowhitespace table-header">
+              <thead style="font-size: 11px;">
+                <tr>
+                  <th rowspan="2" class="width: 1%">STT</th>
+                  <th rowspan="2" style="width: 12%">Nhóm sản phẩm</th>
+                  <th rowspan="2" style="width: 12%">Chi tiết sản phẩm</th>
+                  <th rowspan="2" style="width: 10%">Đơn vị tính</th>
+                  <th rowspan="2" style="width: 10%">Số lượng</th>
+                  <th rowspan="2" style="width: 10%">Đơn giá</th>
+                  <th rowspan="2" style="width: 10%">Thành tiến trước thuế</th>
+                  <th style="width: 18%" colspan="2">Thuế</th>
+                  <th rowspan="2" style="width: 10%">Thành tiền</th>
+                  <th rowspan="2" style="width: 10%">Yêu cầu khác</th>
+                  <th rowspan="2" style="width: 2%">Chức năng</th>
+                </tr>
+                <tr>
+                  <th style="width: 6%">Loại thuế</th>
+                  <th>Tiền thuế</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="8" style="text-align: left">
+                    <span style="font-weight: bold">Tổng đơn hàng</span>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="add-new-row" colspan="12" style="text-align: left">
+                    <span style="color: blue; cursor: pointer;">Thêm dòng mới</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <span>Người quản lý, thực hiện hợp đồng(nếu có)</span><br>
+            <ng-select placeholder="Nhập">
+            </ng-select>
+          </div>
+          <div class="col-md-4">
+            <span>CC</span><br>
+            <ng-select placeholder="Nhập">
+            </ng-select>
+          </div>
+          <div class="col-md-4 d-flex  justify-content-around align-items-center" style="padding-left: 10%">
+            <button type="button" class="btn btn-primary" style="font-size: 11px;" data-toggle="modal" data-target="#chooseNCC">Chọn
+              NCC</button>
+            <button type="button" class="btn btn-success" style="font-size: 11px;" (click)="validateForm()"><i class="fa fa-check"></i>
+              Cập
+              nhật</button>
+            <button type="button" class="btn btn-danger" style="font-size: 11px;"><i class="fa fa-times"></i> Hủy</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <p style="font-size: 12px; color:#0064b4 ;"><i class="fa fa-comments"></i> Thảo luận</p>
+            <div class="discuss-area">
+              <textarea class="form-control" placeholder="Nội dung thảo luận.." type="text"></textarea>
+              <button type="button" class="btn btn-primary float-right mt-1" style="font-size: 9px;"><i class="fa fa-check"></i>
+                Gửi thảo luận
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>

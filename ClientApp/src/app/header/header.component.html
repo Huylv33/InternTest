@@ -1,0 +1,65 @@
+<div class="fixed-top">
+  <div class="nav-fixed-top">
+    <div class="page-header-top" style="background-color: #ffffff">
+      <div class="container-fluid">
+        <div class="page-logo">
+          <a href="#"><img alt="logo" src="../../assets/image/logo-ft.png"><b>Hệ thống Quản lý mua sắm</b></a>
+        </div>
+        <div class="page-info" id="asds">
+          <div class="page-info-content">
+            <span class="public-header-avatar">
+              <div>
+                <img alt="logo" src="../../assets/image/logo-ft.png" width="30">
+              </div>
+            </span>
+            <span class="page-info-content-name">
+              <a style="cursor: pointer">{{username}}</a>
+            </span>
+            <a href="#">
+              Log Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-md fpt-navbar">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse fpt-dropdown-menu" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link fpt-nav-link" href="#">Trang chủ</a>
+          </li>
+          <li class="nav-item" [class.active-link]="isActive1" (click)="toggleActiveStyle(1)">
+            <a class="nav-link fpt-nav-link" routerLink="/rfq">Báo giá</a>
+          </li>
+          <li class="nav-item" [class.active-link]="isActive2" (click)="toggleActiveStyle(2)">
+            <a class="nav-link fpt-nav-link" routerLink="/createPerchaseRequest">Mua sắm</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fpt-nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Danh mục
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu fpt-dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item fpt-nav-link" href="#">Danh sách nhà cung cấp</a>
+              <a class="dropdown-item fpt-nav-link" href="#">Nhóm Công ty - HH/DV</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fpt-nav-link" href="#">Báo cáo
+              <i class="fa fa-angle-down"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link fpt-nav-link" href="#">Quản trị
+              <i class="fa fa-angle-down"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
